@@ -5,6 +5,7 @@ const BotSpecs = props => {
 
   let botType;
 
+console.log(props)
   switch (bot.bot_class) {
     case "Assault":
       botType = <i className="icon large circular military" />;
@@ -61,7 +62,7 @@ const BotSpecs = props => {
             <button
               className="ui button fluid"
               onClick={() =>
-                console.log('connect this to a function that shows all bots')
+                props.goBack()
               }
             >
               Go Back
@@ -69,12 +70,10 @@ const BotSpecs = props => {
             <button
               className="ui button fluid"
               onClick={() =>
-                console.log(
-                  "connect this to a function that adds this bot to your bot army list"
-                )
+                props.addBotToArmy(bot)
               }
             >
-              Enlist
+              {props.armyBots.includes(bot) ? "Remove From Army" : "Enlist"}
             </button>
           </div>
         </div>
